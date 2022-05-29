@@ -13,8 +13,8 @@ function cf() {
   local url=$2
   local data_file=${3:-}
   local response=""
+  local options=""
 
-  options=""
   if [[ -e "$data_file" ]]; then
     if ! jq -e . "$data_file" >/dev/null 2>&1; then
       echo "!! Invalid JSON: $(cat "$data_file")"
@@ -74,7 +74,7 @@ if [[ $is_first_run -eq 1 ]]; then
   * CF_ZONE - The domain name you want to update. (e.g. example.com)
 
 All other values in $env_file can be ignored, as they'll be populated when the script is run."
-  exit
+  exit 1
 fi
 
 # shellcheck source=.env
