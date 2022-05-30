@@ -3,6 +3,11 @@
 script_dir=$(dirname "$(readlink -f "$0")")
 env_file=${CF_ENV_FILE:-$script_dir/.env}
 
+if ! command -v jq > /dev/null 2>&1; then
+  echo "!! Cannot find jq, please install it from: https://stedolan.github.io/jq/"
+  exit 1
+fi
+
 force_update=0
 if [[ "$1" == "--force" ]]; then
   force_update=1
