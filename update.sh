@@ -65,15 +65,8 @@ EOF
 ) >/dev/null
 
 if [[ $is_first_run -eq 1 ]]; then
-  echo "Please update $env_file file with the following values:
-  * CF_RECORD - The fully qualified domain name of the record you want to update. (e.g. test.example.com)
-  * CF_RECORD_PROXIED - Allow CloudFlare to hide the original IP. Must be one of: true, false. Default: false.
-  * CF_RECORD_TTL - The record TTL, in seconds. (e.g. 60)
-  * CF_RECORD_TYPE - The record type. Must be one of: A, AAAA
-  * CF_TOKEN - Your CloudFlare API token.Generate one with DNS Edit permissions at: https://dash.cloudflare.com/profile/api-tokens
-  * CF_ZONE - The domain name you want to update. (e.g. example.com)
-
-All other values in $env_file can be ignored, as they'll be populated when the script is run."
+  echo "* $env_file created!"
+  echo "* Please update your env file by following these instructions: https://github.com/RadPenguin/cloudflare-dynamic-dns/#setup "
   exit 1
 fi
 
